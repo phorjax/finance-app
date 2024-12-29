@@ -1,0 +1,48 @@
+.App {
+  text-align: center;
+}
+
+// Variables for easy customization
+$columns: 12;
+$gutter: 16px;
+
+// Mixin for a column
+@mixin column($span, $total: $columns) {
+  width: percentage($span / $total);
+  padding-left: $gutter;
+  padding-right: $gutter;
+  box-sizing: border-box;
+}
+
+// Container
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -$gutter;
+  margin-right: -$gutter;
+}
+
+// Row
+.row {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -$gutter;
+  margin-right: -$gutter;
+}
+
+// Column
+.col {
+  padding-left: $gutter;
+  padding-right: $gutter;
+  box-sizing: border-box;
+  // Default to one column
+  flex: 1 1 0%;
+}
+
+// Span-specific classes
+@for $i from 1 through $columns {
+  .col-#{$i} {
+    @include column($i);
+  }
+}
